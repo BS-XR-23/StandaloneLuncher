@@ -18,7 +18,7 @@ namespace StandaloneLuncher.BusinessLogic
         public AppVersionInfo LocalVersionInfo => LoadLocalVersionInfo();
         
         private readonly string _appdomainpath = Environment.CurrentDirectory;
-        private string ApplicationFolder=>Path.Combine(_appdomainpath, "app");
+        public string ApplicationFolder=>Path.Combine(_appdomainpath, "app");
         private string VersionFilePath => Path.Combine(ApplicationFolder, "version.json");
         private string DownloadedFilePath=> Path.Combine(ApplicationFolder, "download.zip");
         public string ExecutablePath=> Path.Combine(ApplicationFolder, "build", "StandaloneWindows64","Paint23.exe");
@@ -97,7 +97,11 @@ namespace StandaloneLuncher.BusinessLogic
         private void SaveVersionInfo()
         {
             string data= JsonConvert.SerializeObject(CurrentVersionInfo);
-            File.WriteAllText(VersionFilePath,data);
+            if (Directory.Exists(ApplicationFolder))
+            {
+                File.WriteAllText(VersionFilePath, data);
+            }
+         
         }
 
         private AppVersionInfo LoadLocalVersionInfo()

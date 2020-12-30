@@ -54,7 +54,7 @@ namespace StandaloneLuncher
                 return;
             }
 
-
+            DownloadButton.Visibility = Visibility.Collapsed;
             ProgressBar.Visibility = Visibility.Visible;
             _localFileManager.OnDownloadCompleted += (progress) =>
             {
@@ -76,6 +76,11 @@ namespace StandaloneLuncher
         {
             Process.Start(_localFileManager.ExecutablePath);
             Close();
+        }
+
+        private void LocalFilesButton_Click(object sender, RoutedEventArgs e)
+        {
+            Process.Start("explorer.exe", _localFileManager.ApplicationFolder);
         }
 
         private void UninstallButton_Click(object sender, RoutedEventArgs e)
@@ -101,9 +106,9 @@ namespace StandaloneLuncher
         {
             bool executableAvailable=File.Exists(_localFileManager.ExecutablePath);
             DownloadButton.Visibility = executableAvailable ? Visibility.Collapsed : Visibility.Visible;
-            LaunchButton.Visibility = !executableAvailable ? Visibility.Collapsed : Visibility.Visible;
+            LocalFilesButton.Visibility = LaunchButton.Visibility = !executableAvailable ? Visibility.Collapsed : Visibility.Visible;
             UninstallButton.Visibility = !executableAvailable ? Visibility.Collapsed : Visibility.Visible;
-
+            
             if (_localFileManager.LocalVersionInfo != null)
             {
                 bool higerVersion = _localFileManager.CurrentVersionInfo.Version.CompareTo(_localFileManager.LocalVersionInfo.Version)>0;
@@ -118,5 +123,7 @@ namespace StandaloneLuncher
         }
 
         #endregion
+
+       
     }
 }

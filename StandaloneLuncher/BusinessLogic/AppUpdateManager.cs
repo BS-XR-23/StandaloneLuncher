@@ -5,13 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using StandaloneLuncher.DataModels;
+using StandaloneLuncher.Properties;
 
 namespace StandaloneLuncher.BusinessLogic
 {
     public class AppUpdateManager
     {
         private readonly string BaseUrl = "https://api.appcenter.ms/v0.1/public/sdk/apps/";
-        private readonly string AppSecret = "174d5e9f-d5d7-49ff-a1d1-062fde57bd75";
+        private string AppSecret => Resources.AppSecret;
         private string RequestUrl =>  AppSecret + "/releases/latest";
 
         

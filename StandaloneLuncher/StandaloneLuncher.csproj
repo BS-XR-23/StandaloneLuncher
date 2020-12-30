@@ -8,14 +8,34 @@
     <Authors>Tanimul Haque Khan</Authors>
     <Company>Brain Station 23</Company>
     <Copyright>2TakarDeveloper@2020</Copyright>
+    <PackageProjectUrl>https://github.com/Warhammer4000/StandaloneLuncher</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Warhammer4000/StandaloneLuncher</RepositoryUrl>
+    <RepositoryType>Template App Luncher</RepositoryType>
+    <PackageTags>Appcenter , Template , Luncher</PackageTags>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <Optimize>true</Optimize>
+    <Optimize>false</Optimize>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MaterialDesignThemes.MahApps" Version="0.1.5" />
     <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>
