@@ -2,15 +2,16 @@
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
+using MaterialDesignExtensions.Controls;
+using MaterialDesignThemes.Wpf;
 using StandaloneLuncher.BusinessLogic;
-using StandaloneLuncher.DataModels;
 
 namespace StandaloneLuncher
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : MaterialWindow
     {
         
         private LocalFileManager _localFileManager;
@@ -22,7 +23,7 @@ namespace StandaloneLuncher
 
 
             Task.Run(GetUpdateInfo).Wait();
-            ChangeLogText.Text = _localFileManager.CurrentVersionInfo.release_notes;
+            ChangeLogText.Text = "Change Log\n"+_localFileManager.CurrentVersionInfo.release_notes;
 
             ButtonVisibility();
 
@@ -41,18 +42,26 @@ namespace StandaloneLuncher
 
         #region ButtonLogic
 
-        private void DownloadButton_Click(object sender, RoutedEventArgs e)
+        private async void DownloadButton_Click(object sender, RoutedEventArgs e)
         {
-            string message=string.Concat("This will download Application files (", _localFileManager.CurrentVersionInfo.size/ 1000000, "MB)");
-            if (MessageBox.Show(
-                    this, 
-                    message, 
-                    "Are you sure?", 
-                    MessageBoxButton.OKCancel
-                    ) != MessageBoxResult.OK)
+            string message=string.Concat("This will update application core (", _localFileManager.CurrentVersionInfo.size/ 1000000, "MB)");
+
+            ConfirmationDialogArguments dialogArgs = new ConfirmationDialogArguments
+            {
+                Title = "Download core",
+                Message = message,
+                OkButtonLabel = "OK",
+                CancelButtonLabel = "CANCEL",
+                StackedButtons = false
+            };
+
+            bool result = await ConfirmationDialog.ShowDialogAsync(dialogHost, dialogArgs);
+
+            if (!result)
             {
                 return;
             }
+            
 
             DownloadButton.Visibility = Visibility.Collapsed;
             ProgressBar.Visibility = Visibility.Visible;
@@ -83,14 +92,21 @@ namespace StandaloneLuncher
             Process.Start("explorer.exe", _localFileManager.ApplicationFolder);
         }
 
-        private void UninstallButton_Click(object sender, RoutedEventArgs e)
+        private async void UninstallButton_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show(
-                    this,
-                    "This will Delete Application files",
-                    "Are you sure?",
-                    MessageBoxButton.OKCancel
-                ) != MessageBoxResult.OK)
+            
+            ConfirmationDialogArguments dialogArgs = new ConfirmationDialogArguments
+            {
+                Title = "Are you sure?",
+                Message = "This will delete application core",
+                OkButtonLabel = "OK",
+                CancelButtonLabel = "CANCEL",
+                StackedButtons = false
+            };
+
+            bool result = await ConfirmationDialog.ShowDialogAsync(dialogHost, dialogArgs);
+
+            if (!result)
             {
                 return;
             }
@@ -106,7 +122,8 @@ namespace StandaloneLuncher
         {
             bool executableAvailable=File.Exists(_localFileManager.ExecutablePath);
             DownloadButton.Visibility = executableAvailable ? Visibility.Collapsed : Visibility.Visible;
-            LocalFilesButton.Visibility = LaunchButton.Visibility = !executableAvailable ? Visibility.Collapsed : Visibility.Visible;
+             LaunchButton.Visibility = !executableAvailable ? Visibility.Collapsed : Visibility.Visible;
+            // LocalFilesButton.Visibility = LaunchButton.Visibility;
             UninstallButton.Visibility = !executableAvailable ? Visibility.Collapsed : Visibility.Visible;
             
             if (_localFileManager.LocalVersionInfo != null)
@@ -124,6 +141,20 @@ namespace StandaloneLuncher
 
         #endregion
 
+
+        private void OpenRepo(object sender, RoutedEventArgs e)
+        {
+            ProcessStartInfo psi = new ProcessStartInfo
+            {
+                FileName = "https://github.com/Warhammer4000/StandaloneLuncher",
+                UseShellExecute = true
+            };
+
+            Process.Start(psi);
+            
+        }
        
+
+
     }
 }

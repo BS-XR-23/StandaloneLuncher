@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using Newtonsoft.Json;
 using StandaloneLuncher.DataModels;
+using StandaloneLuncher.Properties;
 
 namespace StandaloneLuncher.BusinessLogic
 {
@@ -21,7 +22,7 @@ namespace StandaloneLuncher.BusinessLogic
         public string ApplicationFolder=>Path.Combine(_appdomainpath, "app");
         private string VersionFilePath => Path.Combine(ApplicationFolder, "version.json");
         private string DownloadedFilePath=> Path.Combine(ApplicationFolder, "download.zip");
-        public string ExecutablePath=> Path.Combine(ApplicationFolder, "build", "StandaloneWindows64","Paint23.exe");
+        public string ExecutablePath=> Path.Combine(ApplicationFolder, Resources.ApplicationRelativePath);
 
         public delegate void DownloadProgressEvent(int progress);
 

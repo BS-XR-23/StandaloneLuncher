@@ -61,6 +61,15 @@ namespace StandaloneLuncher.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to build/StandaloneWindows64/Paint23.exe.
+        /// </summary>
+        internal static string ApplicationRelativePath {
+            get {
+                return ResourceManager.GetString("ApplicationRelativePath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 174d5e9f-d5d7-49ff-a1d1-062fde57bd75.
         /// </summary>
         internal static string AppSecret {
