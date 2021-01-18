@@ -1,7 +1,7 @@
 # StandaloneLuncher
 A Template Luncher Repository for Deskotop Applications hosted on AppCenter
 
-###### Screenshots
+## Screenshots
 ![Alt text](Screenshots/1.PNG)
 ![Alt text](Screenshots/2.PNG)
 ![Alt text](Screenshots/3.PNG)
