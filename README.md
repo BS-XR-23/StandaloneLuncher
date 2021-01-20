@@ -7,7 +7,7 @@ A Template Luncher Repository for Deskotop Applications hosted on AppCenter
 ![Alt text](Screenshots/3.PNG)
 ![Alt text](Screenshots/4.PNG)
 
-#Features
+# Features
 * Realtime Download Progress Bar
 * Realtime Extraction Progress Bar
 * Changelog From Appcenter
