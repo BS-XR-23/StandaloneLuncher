@@ -7,6 +7,12 @@ A Template Luncher Repository for Deskotop Applications hosted on AppCenter
 ![Alt text](Screenshots/3.PNG)
 ![Alt text](Screenshots/4.PNG)
 
+#Features
+* Realtime Download Progress Bar
+* Realtime Extraction Progress Bar
+* Changelog From Appcenter
+* Easy to configure for your CD Pipeline
+
 # Concept
 [Microsoft Appcenter](https://appcenter.ms/) is a service provided by microsoft where you can publish and distribute your applications just like any other store in the market. And they provide api for their service to be used for your needs too. So it's possible to use Appcenter as your version control server where you store your builds and an launcher application to update your application. If you are here you already know what this does.
 
@@ -20,9 +26,10 @@ FREE! Appcenter, Provides unlimited distribution and users.
 ![Alt text](GitHubResources/AppCenter_New.PNG)
 ### Copy the app secret
 ![Alt text](GitHubResources/AppCenterSecret.PNG)
-### Create a new Release
-![Alt text](GitHubResources/NewRelease.PNG)
+
 ### Upload your build outputs as .zip file
+![Alt text](GitHubResources/NewRelease.PNG)
+
 
 ## STEP 2 : Launcher Configuration
 ### Clone The Repository
