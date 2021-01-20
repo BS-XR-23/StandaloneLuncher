@@ -11,7 +11,7 @@ namespace StandaloneLuncher.BusinessLogic
 {
     public class AppUpdateManager
     {
-        private readonly string BaseUrl = "https://api.appcenter.ms/v0.1/public/sdk/apps/";
+        private readonly string _baseUrl = $"https://api.appcenter.ms/v0.1/public/sdk/apps/";
         private string AppSecret => Resources.AppSecret;
         private string RequestUrl =>  AppSecret + "/releases/latest";
 
@@ -19,7 +19,7 @@ namespace StandaloneLuncher.BusinessLogic
 
         public async Task<AppVersionInfo> GetData()
         {
-            using var httpClient = new HttpClient {BaseAddress = new Uri(BaseUrl)};
+            using var httpClient = new HttpClient {BaseAddress = new Uri(_baseUrl)};
 
             using var response = await httpClient.GetAsync(RequestUrl);
             if (response.IsSuccessStatusCode)

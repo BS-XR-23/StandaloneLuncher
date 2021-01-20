@@ -70,11 +70,30 @@ namespace StandaloneLuncher.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Rainbow Color Visualizer.
+        /// </summary>
+        internal static string AppName {
+            get {
+                return ResourceManager.GetString("AppName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 174d5e9f-d5d7-49ff-a1d1-062fde57bd75.
         /// </summary>
         internal static string AppSecret {
             get {
                 return ResourceManager.GetString("AppSecret", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap HexaBackground {
+            get {
+                object obj = ResourceManager.GetObject("HexaBackground", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

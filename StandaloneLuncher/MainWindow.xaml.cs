@@ -2,15 +2,13 @@
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Documents;
 using MaterialDesignExtensions.Controls;
-using MaterialDesignThemes.Wpf;
 using StandaloneLuncher.BusinessLogic;
 
 namespace StandaloneLuncher
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+
     public partial class MainWindow : MaterialWindow
     {
         
@@ -21,10 +19,11 @@ namespace StandaloneLuncher
             InitializeComponent();
             _localFileManager=new LocalFileManager();
 
-
+            
             Task.Run(GetUpdateInfo).Wait();
-            ChangeLogText.Text = "Change Log\n"+_localFileManager.CurrentVersionInfo.release_notes;
-
+            ApplicationNameLable.Text = $"{Properties.Resources.AppName}";
+            ChangeLogLable.Content = $"Change Log({_localFileManager.CurrentVersionInfo.Version})";
+            ChangeLogText.Text=_localFileManager.CurrentVersionInfo.release_notes;
             ButtonVisibility();
 
         }
@@ -61,16 +60,25 @@ namespace StandaloneLuncher
             {
                 return;
             }
-            
 
+            LaunchButton.Visibility = Visibility.Collapsed;
+            UninstallButton.Visibility = Visibility.Collapsed;
             DownloadButton.Visibility = Visibility.Collapsed;
-            ProgressBar.Visibility = Visibility.Visible;
-            _localFileManager.OnDownloadCompleted += (progress) =>
+            ProgressBarPanel.Visibility = Visibility.Visible;
+
+            ProgressLable.Text = "Initializing...";
+
+           _localFileManager.OnDownloadCompleted += (progress) =>
             {
-                ProgressBar.Visibility = Visibility.Collapsed;
+                ProgressBarPanel.Visibility = Visibility.Collapsed;
                 ButtonVisibility();
             };
-            _localFileManager.DownloadProgress += (progress) => ProgressBar.Value = progress;
+            _localFileManager.DownloadProgress += (progress) =>
+            {
+
+                ProgressLable.Text = progress.Message;
+                ProgressBar.Value = progress.Progress;
+            };
             
             _localFileManager.DownloadFiles(_localFileManager.CurrentVersionInfo.download_url);
 
