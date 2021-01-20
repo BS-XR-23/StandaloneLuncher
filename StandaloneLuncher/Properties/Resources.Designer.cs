@@ -70,7 +70,7 @@ namespace StandaloneLuncher.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Rainbow Color Visualizer.
+        ///   Looks up a localized string similar to Your App Name.
         /// </summary>
         internal static string AppName {
             get {
