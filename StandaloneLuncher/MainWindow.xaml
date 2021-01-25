@@ -42,12 +42,14 @@
                 </Grid.RowDefinitions>
 
                 <Grid Grid.Row="0">
-                    <TextBlock x:Name="ApplicationNameLable" TextWrapping="Wrap" Text="Application Name Here" Foreground="{DynamicResource MaterialDesignBackground}" FontSize="48" VerticalAlignment="Center" Width="600" HorizontalAlignment="Left" Height="200" TextAlignment="Center" FontWeight="Bold"></TextBlock>
+                    <TextBlock x:Name="ApplicationNameLable" TextWrapping="Wrap" Text="Application Name Here" Foreground="{DynamicResource MaterialDesignBackground}" FontSize="48" VerticalAlignment="Top" Width="600" HorizontalAlignment="Left" Height="113" TextAlignment="Center" FontWeight="Bold" Margin="3,132,0,0"></TextBlock>
+                    <Image Source="/Resources/NicePng_your-logo-here-png_2467547.png" Width="250" Height="250" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="167,260,0,0" Visibility="Visible">
+
+                    </Image>
+
                     <StackPanel Orientation="Vertical" HorizontalAlignment="Right" Background="{DynamicResource MaterialDesignBody}" Margin="25,25,25,25" Width="600">
                         <Label x:Name="ChangeLogLable"  Foreground="#DDFFFFFF" FontWeight="Bold" FontSize="32" VerticalAlignment="Center"  FontFamily="Arial Black" Width="600" Height="50" Content="Change Log" Margin="15,15,15,15"/>
                         <TextBlock x:Name="ChangeLogText"  FontSize="18" FontWeight="Bold"  Background="Transparent"  Visibility="Visible" Margin="20,20,20,20" Foreground="{DynamicResource MaterialDesignBackground}" Focusable="False">
-                          
-
                         </TextBlock>
                     </StackPanel>
 

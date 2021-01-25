@@ -70,7 +70,7 @@ namespace StandaloneLuncher.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Your App Name.
+        ///   Looks up a localized string similar to Rainbow Visualizer.
         /// </summary>
         internal static string AppName {
             get {
@@ -93,6 +93,16 @@ namespace StandaloneLuncher.Properties {
         internal static System.Drawing.Bitmap HexaBackground {
             get {
                 object obj = ResourceManager.GetObject("HexaBackground", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap NicePng_your_logo_here_png_2467547 {
+            get {
+                object obj = ResourceManager.GetObject("NicePng_your_logo_here_png_2467547", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
