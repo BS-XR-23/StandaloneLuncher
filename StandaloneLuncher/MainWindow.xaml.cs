@@ -61,6 +61,7 @@ namespace StandaloneLuncher
             }
 
             LaunchButton.Visibility = Visibility.Collapsed;
+            UpdateButton.Visibility = Visibility.Collapsed;
             UninstallButton.Visibility = Visibility.Collapsed;
             DownloadButton.Visibility = Visibility.Collapsed;
             ProgressBarPanel.Visibility = Visibility.Visible;
