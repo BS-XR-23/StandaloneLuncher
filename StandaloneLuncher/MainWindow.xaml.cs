@@ -21,8 +21,8 @@ namespace StandaloneLuncher
             
             Task.Run(GetUpdateInfo).Wait();
             ApplicationNameLable.Text = $"{Properties.Resources.AppName}";
-            ChangeLogLable.Content = $"Change Log({_localFileManager.CurrentVersionInfo.Version})";
-            ChangeLogText.Text=_localFileManager.CurrentVersionInfo.release_notes;
+            ChangeLogText.Text = $"Current Version({_localFileManager.CurrentVersionInfo.Version})\n\n";
+            ChangeLogText.Text+=_localFileManager.CurrentVersionInfo.release_notes;
             ButtonVisibility();
 
         }

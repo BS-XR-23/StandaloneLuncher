@@ -47,11 +47,10 @@
 
                     </Image>
 
-                    <StackPanel Orientation="Vertical" HorizontalAlignment="Right" Background="{DynamicResource MaterialDesignBody}" Margin="25,25,25,25" Width="600">
-                        <Label x:Name="ChangeLogLable"  Foreground="#DDFFFFFF" FontWeight="Bold" FontSize="32" VerticalAlignment="Center"  FontFamily="Arial Black" Width="600" Height="50" Content="Change Log" Margin="15,15,15,15"/>
+                    <ScrollViewer  HorizontalAlignment="Right" Background="{DynamicResource MaterialDesignBody}" Margin="25,25,25,25" Width="600">
                         <TextBlock x:Name="ChangeLogText"  FontSize="18" FontWeight="Bold"  Background="Transparent"  Visibility="Visible" Margin="20,20,20,20" Foreground="{DynamicResource MaterialDesignBackground}" Focusable="False">
                         </TextBlock>
-                    </StackPanel>
+                    </ScrollViewer>
 
                 </Grid>
 
